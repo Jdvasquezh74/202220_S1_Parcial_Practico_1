@@ -38,7 +38,7 @@ public class HotelService {
             if (!hotelRepository.findByNombre(hotelEntity.getNombre()).isEmpty())
                 throw new IllegalOperationException("Ya existe un hotel con el Nombre indicado.");
             
-            if (hotelEntity.getNumeroEstrellas() < 1 || hotelEntity.getNumeroEstrellas() > 5)
+            if (!(hotelEntity.getNumeroEstrellas() >= 1 && hotelEntity.getNumeroEstrellas() <= 5))
                 throw new IllegalOperationException("NumeroEstrellas debe ser un valor entre 1 y 5.");
             
             log.info("Termina proceso de creación del hotel");

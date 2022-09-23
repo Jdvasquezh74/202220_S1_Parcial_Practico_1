@@ -35,7 +35,7 @@ public class HotelHabitacionService {
 	 */
 	@Transactional
 	public HabitacionEntity addHabitacion(Long habitacionId, Long hotelId) throws EntityNotFoundException {
-		log.info("Inicia proceso de asociarle una parte a la caracteristica con id = {0}", hotelId);
+		log.info("Inicia proceso de asociarle una habitacion al hotel con id = {0}", hotelId);
 		Optional<HabitacionEntity> habitacionEntity = habitacionRepository.findById(habitacionId);
 		if (habitacionEntity.isEmpty())
 			throw new EntityNotFoundException("Habitacion not found");
@@ -44,8 +44,8 @@ public class HotelHabitacionService {
 		if (hotelEntity.isEmpty())
 			throw new EntityNotFoundException("Hotel not found");
 
-		hotelEntity.get().getPartes().add(parteEntity.get());
-		log.info("Termina proceso de asociarle una parte a la caracteristica con id = {0}", caracteristicaId);
-		return parteEntity.get();
+		hotelEntity.get().getHabitaciones().add(habitacionEntity.get());
+		log.info("Termina proceso de asociarle una habitacion al hotel con id = {0}", hotelId);
+		return habitacionEntity.get();
 	}
 }
