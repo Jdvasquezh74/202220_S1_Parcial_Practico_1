@@ -96,7 +96,7 @@ class HotelHabitacionServiceTest {
 	
 	@Test
 	void testAddHabitacionInvalidHabitacion() {
-		assertThrows(IllegalOperationException.class, () -> {
+		assertThrows(EntityNotFoundException.class, () -> {
 			hotelHabitacionService.addHabitacion(hotelList.get(0).getId(), 0L);
 		});
 	}
@@ -107,7 +107,7 @@ class HotelHabitacionServiceTest {
 	
 	@Test
 	void testAddHabitacionInvalidHotel() {
-		assertThrows(IllegalOperationException.class, () -> {
+		assertThrows(EntityNotFoundException.class, () -> {
 			hotelHabitacionService.addHabitacion(0L, habitacionList.get(0).getId());
 		});
 	}
